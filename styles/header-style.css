@@ -68,6 +68,7 @@ ul.nav li {
     margin-right: 35px;
     padding-top: 15px;
     padding-bottom: 20px;
+    font-weight: bold;
 }
 
 .nav {
@@ -79,5 +80,12 @@ ul.nav li {
     margin-left: 3%;
     margin-right: 3%;
 }
-.cart {
+
+#recipes-link::after {
+    
+    color:#fee86d;
+    content: "\2605";
+    position: absolute;
+    margin-top: -8px;
 }
+
