@@ -1,111 +1,83 @@
-.header{
+.header {
     margin-left: 3%;
     margin-top: 4%;
     margin-bottom: 4%;
     display: flex;
-    flex-shrink: 0;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-.logo{
-    /* width: 200px;
-    height:50px; */
+.logo {
     width: 18%;
-    display: flex;
-    flex-direction: column;
 }
 
-.search-container{
+.search-container {
     display: flex;
     flex-direction: row;
-    margin-left: 30%;
+    margin-left: 25%;
 }
 
-.searchbox{
+.searchbox {
     padding: 0;
-    display: flex;
-    flex-direction: column;
     width: 25em;
-    /* border-style: solid;
-    border-color: whitesmoke; */
-    border: 1px solid rgb(218, 215, 215);
+    border: 1.5px solid rgb(218, 215, 215);
 }
-input{
+input {
     text-indent: 20px;
     font-size: 15px;
-  }
-#btn-search{
-    width:13%;
+}
+#btn-search {
+    width: 13%;
     background-color: #fee86d;
     border: 0px;
     border-radius: 0px;
 }
-/* ul,li{
-    display: inline-block;
-    overflow: hidden;
+
+#btn-search:hover {
+    background-color: #eeda6a;
+    cursor: pointer;
 }
 
-.topnav{
-    position: relative;
-    margin: 1em;
-    overflow: hidden;
-}
-
-.topnav ul {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-left: -1px;
-}
-
-.topnav li {
-    flex-grow: 1;
-    flex-basis: auto;
-    padding: 0 1em;
-    text-align: center;
-    border-right: 1px solid #ccc;
-    background-color: #fff;
-}
-
-.topnav li:last-child{
-    border-right: 0px;
-} */
-a{
+a {
     text-decoration: none;
 }
-a:visited{
-    color:inherit;
-}
-.topnav{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 3%;
+
+a:visited {
+    color: inherit;
 }
 
-.nav ul,li {
+
+.topnav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: 7%;
+}
+
+.nav
+li {
     display: inline-block;
     overflow: hidden;
 }
 
-.nav ul{
+.nav ul {
     margin: 0;
 }
 
-.nav li{
-   margin-right: 35px;
-   padding-top: 20px;
-   padding-bottom: 20px;
+ul.nav li {
+    margin-right: 35px;
+    padding-top: 15px;
+    padding-bottom: 20px;
 }
 
-.nav{
-    margin-top: 8%;
+.nav {
+    margin-top: 3%;
     display: flex;
     flex: 0 0 100%;
-    border-top: 1px solid gray;
+    border-top: 1.5px solid rgb(218, 215, 215);
+    border-bottom: 1.5px solid rgb(218, 215, 215);
+    margin-left: 3%;
+    margin-right: 3%;
 }
-.cart{
-
+.cart {
 }
