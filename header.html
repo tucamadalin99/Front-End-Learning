@@ -1,6 +1,18 @@
-<div class="all">
-    <div class="header">
-        <img class="logo" src="../public/logo_home2.png" alt="Site Logo" />
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/header.css">
+    <link rel="stylesheet" href="./styles/index.css">
+    <title>Header</title>
+</head>
+
+<body>
+    <div class="top-nav">
+        <img class="logo" src="./public/logo_home2.png" alt="Site Logo" />
         <div class="search-container">
             <input type="text" class="searchbox" placeholder="Search">
             <button id="btn-search">
@@ -11,7 +23,7 @@
                 </svg>
             </button>
         </div>
-        <div class="topnav">
+        <div class="top-nav-btns-container">
             <a id="cart-link" href=""><span><svg width="21px" height="18px" enable-background="new 0 0 24 24"
                         id="Layer_1" version="1.1" viewBox="0 0 24 24" width="24px" xml:space="preserve"
                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -27,13 +39,15 @@
     <div class="navbar">
         <ul class="nav">
             <li> <a href="">HOME</a></li>
-            <li><a id="recipes-link" href="">RECIPES</a></li>
+            <li><a id="recipes-link" href="./pages/recipes.html">RECIPES</a></li>
             <li><a href="">FORUM</a></li>
             <li><a href="">SHOP</a></li>
             <li><a href="">ABOUT</a></li>
             <li><a href="">CONTACT</a></li>
         </ul>
     </div>
-</div>
-<script src="https://www.gstatic.com/firebasejs/7.14.4/firebase.js"></script>
-<script src="scripts/auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase.js"></script>
+    <script src="scripts/auth.js"></script>
+</body>
+
+</html>

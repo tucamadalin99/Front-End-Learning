@@ -46,7 +46,6 @@ a:visited {
     color: inherit;
 }
 
-
 .topnav {
     display: flex;
     align-items: center;
@@ -54,8 +53,7 @@ a:visited {
     margin-left: 7%;
 }
 
-.nav
-li {
+.nav li {
     display: inline-block;
     overflow: hidden;
 }
@@ -82,10 +80,8 @@ ul.nav li {
 }
 
 #recipes-link::after {
-    
-    color:#fee86d;
+    color: #fee86d;
     content: "\2605";
     position: absolute;
     margin-top: -8px;
 }
-
