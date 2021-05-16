@@ -24,7 +24,7 @@ window.onload = () => {
         const dbRef = firebase.database().ref(`${user.id}`);
         dbRef.on('value', async (snapshot) => {
             userCart = await snapshot.val();
-            document.getElementById("cart-link").childNodes[1].nodeValue = ` Cart ($${userCart.cartPrice.toFixed(2)})`
+            document.querySelector(".cart-link").childNodes[1].nodeValue = `Cart ($${userCart.cartPrice.toFixed(2)})`
         })
     } else {
         console.log("Auth failed, no user in local storage")
