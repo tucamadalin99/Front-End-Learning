@@ -55,10 +55,13 @@ window.onload = () => {
                     data.results[0].tags
                     && data.results[0].tags.length > 0
                 ) {
-                    tagsContainer.innerHTML = `<span><img src="assets/svg/tag.svg" class="tag-svg" alt="Tag icon" height='17' width='17' /></span>`
+                    tagsContainer.innerHTML =
+                        `<span>
+                    <img src="assets/svg/tag.svg" class="tag-svg" alt="Tag icon" height='17' width='17' />
+                    </span>`;
                     data.results[0].tags.forEach(tag => {
                         if (tag) {
-                            tagsContainer.innerHTML += `<span class="tags">${tag}</span>`
+                            tagsContainer.innerHTML += `<span class="tags">${tag}</span>`;
                         }
                     })
                 }
@@ -67,11 +70,19 @@ window.onload = () => {
                 console.log("The recipeContent container had an error.");
             }
 
-            if (data.results[0].name && tagsContainer) {
-                tagsContainer.insertAdjacentHTML("afterend", `<h1 class="title">${data.results[0].name}</h1>`)
+            if (data.results[0].name
+                && tagsContainer) {
+
+                tagsContainer.insertAdjacentHTML("afterend", `<h1 class="title">${data.results[0].name}</h1>`);
+
             }
-            if (data.results[0].description && recipeContainer) {
-                recipeContainer.insertAdjacentHTML("beforeend", `<p class="description">${data.results[0].description}</h1>`)
+            if (data.results[0].description
+                && recipeContainer) {
+
+                recipeContainer.insertAdjacentHTML("beforeend", `<p class="description">
+                ${data.results[0].description}
+                </h1>`);
+
             }
         }
 
