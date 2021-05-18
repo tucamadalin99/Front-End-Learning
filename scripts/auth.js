@@ -34,6 +34,7 @@ window.onload = () => {
     let bannerPic = document.querySelector(".banner");
     let tagsContainer = document.querySelector(".tags-container");
     let recipeContainer = document.querySelector(".recipe-content");
+    //Selects data from firebase and adds the html elements accordingly
     apiDataRef.on('value', async (snapshot) => {
         data = await snapshot.val();
 
