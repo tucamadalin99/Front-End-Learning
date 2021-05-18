@@ -8,6 +8,18 @@ var firebaseConfig = {
     appId: "1:185203005676:web:b77b0a61affd56af9c6dc9",
     measurementId: "G-0LV3RBN6J8"
 };
+
+function checkImageExists(imageUrl, callBack) {
+    var imageData = new Image();
+    imageData.onload = function () {
+        callBack(true);
+    };
+    imageData.onerror = function () {
+        callBack(false);
+    };
+    imageData.src = imageUrl;
+}
+
 window.onload = () => {
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
@@ -34,6 +46,7 @@ window.onload = () => {
     let bannerPic = document.querySelector(".banner");
     let tagsContainer = document.querySelector(".tags-container");
     let recipeContainer = document.querySelector(".recipe-content");
+    let categoriesContainer = document.querySelector(".cards-container")
     //Selects data from firebase and adds the html elements accordingly
     apiDataRef.on('value', async (snapshot) => {
         data = await snapshot.val();
@@ -85,6 +98,41 @@ window.onload = () => {
                 );
             }
         }
+        let categories = [];
+        data.results.forEach((result) => {
+            if (result.tags && result.tags.length > 0) {
+                result.tags.forEach(tag => {
+                    categories.push(tag);
+                })
+            }
+        })
 
+        if (categories.length > 0) {
+            categoriesContainer.insertAdjacentHTML('afterbegin',
+                `<div class="row" id="row"></div>`
+            );
+            let row = document.getElementById(`row`);
+            categories.forEach(el => {
+                checkImageExists(`./assets/categories/${el}.png`, function (existsImage) {
+                    if (existsImage == true) {
+                        row.insertAdjacentHTML('afterbegin',
+                            `<div class="categories">
+                            <img class="category-img" src="./assets/categories/${el}.png" alt="${el} Image">
+                            <h3 class="category-title">${el}</h3>
+                            </div>`
+                        );
+                    }
+                    else {
+                        row.insertAdjacentHTML('afterbegin',
+                            `<div class="categories">
+                            <div class="acronym">${el[0]}</div>
+                            <h3 class="category-title">${el}</h3>
+                            </div>`
+                        );
+                    }
+                });
+            })
+
+        }
     })
 }
