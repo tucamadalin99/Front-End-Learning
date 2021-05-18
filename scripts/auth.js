@@ -80,10 +80,9 @@ window.onload = () => {
             if (data.results[0].description
                 && recipeContainer) {
 
-                recipeContainer.insertAdjacentHTML("beforeend", `<p class="description">
-                ${data.results[0].description}
-                </h1>`);
-
+                recipeContainer.insertAdjacentHTML("beforeend",
+                    `<p class="description">${data.results[0].description}</p>`
+                );
             }
         }
 
