@@ -101,12 +101,7 @@ window.onload = () => {
         let categories = [];
         data.results.forEach((result) => {
             if (result.tags && result.tags.length > 0) {
-                result.tags.forEach(tag => {
-                    let repeatedTag = categories.find(el => el == tag);
-                    if (!repeatedTag) {
-                        categories.push(tag);
-                    }
-                })
+                categories = categories.concat(_.uniq(result.tags))
             }
         })
 
