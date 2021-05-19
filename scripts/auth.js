@@ -101,11 +101,14 @@ window.onload = () => {
         let categories = [];
         data.results.forEach((result) => {
             if (result.tags && result.tags.length > 0) {
-                categories = categories.concat(_.uniq(result.tags))
+                result.tags.forEach(tag => {
+                    categories.push(tag);
+                })
             }
         })
 
         if (categories.length > 0) {
+            categories = _.uniq(categories);
             categoriesContainer.insertAdjacentHTML('afterbegin',
                 `<div class="row" id="row"></div>`
             );
