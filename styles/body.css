@@ -1,7 +1,17 @@
+:root {
+    --dark: #2c2b25;
+    --darker: #060606;
+    --dark-gray: #595954;
+    --light-gray: #adadad;
+    --gray: #817e7f;
+    --white-gray: #d7e0e0;
+    --white: #ffffff;
+}
+
 html {
     font-family: sans-serif;
     font-size: 14px;
-    color: #2c2b25;
+    color: var(--dark);
 }
 
 .banner {
@@ -11,15 +21,9 @@ html {
     background-position: center;
 }
 
-.picture {
-    width: 100%;
-    height: 80vh;
-    object-fit: cover;
-}
-
 .recipe-content {
     padding: 40px 35px;
-    background-color: #ffffff;
+    background-color: var(--white);
     width: 40vw;
     box-shadow: 5px -5px 20px rgb(161, 161, 161);
     display: flex;
@@ -43,16 +47,18 @@ html {
     position: relative;
     top: -2px;
     margin-right: 3px;
+    height: 17px;
+    width: 17px;
 }
 
 .title {
-    color: #060606;
+    color: var(--darker);
     font-size: 40px;
     font-weight: 500;
 }
 
 .description {
-    color: #817e7f;
+    color: var(--gray);
     font-size: 15px;
     line-height: 1.8;
     white-space: break-spaces;
@@ -62,11 +68,11 @@ html {
     text-align: center;
     font-weight: 200;
     text-transform: uppercase;
-    background-color: white;
+    background-color: var(--white);
 }
 
 .cards-container {
-    border: 1px solid #d7e0e0;
+    border: 1px solid var(--white-gray);
     text-align: center;
     min-height: 30vh;
     display: flex;
@@ -87,7 +93,7 @@ html {
 .category-title {
     text-transform: capitalize;
     font-weight: 400;
-    color: #595954;
+    color: var(--dark-gray);
 }
 
 .categories {
@@ -102,14 +108,14 @@ html {
 .acronym {
     font-size: 25px;
     text-transform: capitalize;
-    color: white;
+    color: var(--white);
     display: flex;
     justify-content: center;
     align-items: center;
     width: 67px;
     height: 67px;
     border-radius: 50%;
-    background-color: #adadad;
+    background-color: var(--light-gray);
 }
 
 @media only screen and (max-width: 600px) {

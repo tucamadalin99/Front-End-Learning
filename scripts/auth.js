@@ -9,12 +9,12 @@ var firebaseConfig = {
     measurementId: "G-0LV3RBN6J8"
 };
 
-function checkImageExists(imageUrl, callBack) {
+const checkImageExists = (imageUrl, callBack) => {
     var imageData = new Image();
-    imageData.onload = function () {
+    imageData.onload = () => {
         callBack(true);
     };
-    imageData.onerror = function () {
+    imageData.onerror = () => {
         callBack(false);
     };
     imageData.src = imageUrl;
@@ -71,7 +71,7 @@ window.onload = () => {
                 ) {
                     tagsContainer.innerHTML =
                         `<span>
-                    <img src="assets/svg/tag.svg" class="tag-svg" alt="Tag icon" height='17' width='17' />
+                    <img src="assets/svg/tag.svg" class="tag-svg" alt="Tag icon"/>
                     </span>`;
                     data.results[0].tags.forEach(tag => {
                         if (tag) {
@@ -102,7 +102,10 @@ window.onload = () => {
         data.results.forEach((result) => {
             if (result.tags && result.tags.length > 0) {
                 result.tags.forEach(tag => {
-                    categories.push(tag);
+                    let repeatedTag = categories.find(el => el == tag);
+                    if (!repeatedTag) {
+                        categories.push(tag);
+                    }
                 })
             }
         })
@@ -113,7 +116,7 @@ window.onload = () => {
             );
             let row = document.getElementById(`row`);
             categories.forEach(el => {
-                checkImageExists(`./assets/categories/${el}.png`, function (existsImage) {
+                checkImageExists(`./assets/categories/${el}.png`, (existsImage) => {
                     if (existsImage == true) {
                         row.insertAdjacentHTML('afterbegin',
                             `<div class="categories">
