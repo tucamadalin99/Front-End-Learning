@@ -99,16 +99,12 @@ window.onload = () => {
             }
         }
         let categories = [];
-        data.results.forEach((result) => {
-            if (result.tags && result.tags.length > 0) {
-                result.tags.forEach(tag => {
-                    categories.push(tag);
-                })
-            }
+        data.results.forEach(result => {
+            categories = [...categories, ...result.tags];
         })
 
+        categories = _.uniq(categories);
         if (categories.length > 0) {
-            categories = _.uniq(categories);
             categoriesContainer.insertAdjacentHTML('afterbegin',
                 `<div class="row" id="row"></div>`
             );
