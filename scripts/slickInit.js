@@ -1,37 +1,115 @@
-$(document).ready(() => {
-    $('.carousel-row').slick({
-        infinite: false,
-        speed: 300,
-        slidesToShow: 4,
-        slidesToScroll: 4,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    infinite: true,
-                    dots: true
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-            // You can unslick at a given breakpoint now by adding:
-            // settings: "unslick"
-            // instead of a settings object
-        ]
-    });
 
-})
+
+$(document).ready(() => {
+
+    if (document.getElementsByClassName('carousel-container').length > 0) {
+
+        var couponsCarousel = $('.carousel-container');
+        console.log('here', document.getElementsByClassName('carousel-container'));
+        couponsCarousel
+
+            .slick({
+
+                dots: false,
+
+                infinite: false,
+
+                slidesToShow: 8,
+
+                cssEase: 'linear',
+
+                speed: 300,
+
+                centerMode: false,
+
+                mobileFirst: true,
+
+                accessibility: true,
+
+                arrows: true,
+
+                variableWidth: true,
+
+                variableHeight: true,
+
+                responsive: [{
+
+                    breakpoint: 1440,
+
+                    settings: {
+
+                        slidesToShow: 7,
+
+                    }
+
+                }, {
+
+                    breakpoint: 1096,
+
+                    settings: {
+
+                        slidesToShow: 6,
+
+                    }
+
+                }, {
+
+                    breakpoint: 986,
+
+                    settings: {
+
+                        slidesToShow: 5,
+
+                    }
+
+                }, {
+
+                    breakpoint: 810,
+
+                    settings: {
+
+                        slidesToShow: 4,
+
+                    }
+
+                }, {
+
+                    breakpoint: 600,
+
+                    settings: {
+
+                        slidesToShow: 3,
+
+                    }
+
+                }, {
+
+                    breakpoint: 420,
+
+                    settings: {
+
+                        slidesToShow: 2,
+
+                    }
+
+                }, {
+
+                    breakpoint: 320,
+
+                    settings: {
+
+                        slidesToShow: 1,
+
+                    }
+
+                }]
+            })
+
+        couponsCarousel.slick('slickRemove', false);
+
+    }
+
+}
+)
+
+$(".slick-track").css("max-width", $(window).width());

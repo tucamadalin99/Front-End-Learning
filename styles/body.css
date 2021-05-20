@@ -6,6 +6,7 @@
     --gray: #817e7f;
     --white-gray: #d7e0e0;
     --white: #ffffff;
+    --light-yellow: #fee86d;
     --shadow: 5px -5px 20px rgb(161, 161, 161);
     --font-size: 14px;
 }
@@ -120,24 +121,36 @@ html {
     background-color: var(--light-gray);
 }
 
-.carousel-row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* flex-flow: wrap; */
+.carousel-wrapper {
     margin: 0 2.5vw;
 }
 
 .carousel-col {
-    margin: 10px;
-    display: flex;
-    /* flex: 25%; */
-    flex-direction: column;
+    margin: 0 1.5vw;
 }
 
 .recipe-img {
     width: 100%;
     height: auto;
+}
+
+.tags-carousel {
+    margin-top: 2vh;
+}
+
+.title-carousel-itm {
+    margin: 1.5vh 0;
+    font-weight: bold;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    color: var(--light-yellow) !important;
+}
+
+.slick-prev,
+.slick-next {
+    top: 70px !important;
 }
 
 @media only screen and (max-width: 600px) {

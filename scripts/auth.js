@@ -9,6 +9,7 @@ var firebaseConfig = {
     measurementId: "G-0LV3RBN6J8"
 };
 
+
 const checkImageExists = (imageUrl, callBack) => {
     var imageData = new Image();
     imageData.onload = () => {
@@ -129,7 +130,71 @@ window.onload = () => {
                     }
                 });
             })
-
         }
+
+        let carouselWrapper = document.querySelector(".carousel-wrapper");
+        const featuredItems = data.results.filter(item => item.featured);
+        const MAX_CAROUSEL_ITEMS = 12;
+
+        if (featuredItems.length > 0) {
+            let currentItems = 0;
+            if (currentItems <= MAX_CAROUSEL_ITEMS) {
+                featuredItems.forEach(item => {
+                    carouselWrapper.insertAdjacentHTML("afterbegin",
+                        `<div class="carousel-col">
+                <img class="recipe-img" src="${item.imageUrl}"
+                    alt="Recipe picture">
+                <div class="tags-container tags-carousel">
+                </div>
+                <h1 class="title-carousel-itm">${item.name}</h1>
+                <p class="description">${item.description}</p>
+                    </div>`
+                    )
+                    let carouselColTags = document.querySelector(".tags-carousel");
+                    carouselColTags.innerHTML += `<img src="assets/svg/tag.svg" class="tag-svg" alt="Tag icon" />`;
+                    item.tags.forEach(tag => {
+                        carouselColTags.innerHTML += `<span class="tags">${tag}</span>`;
+                    })
+                    currentItems++;
+                })
+            }
+            $('.carousel-wrapper').slick({
+                dots: true,
+                arrows: true,
+                infinite: false,
+                speed: 300,
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3,
+                            infinite: true,
+                            dots: true
+                        }
+                    },
+                    {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }
+                    // You can unslick at a given breakpoint now by adding:
+                    // settings: "unslick"
+                    // instead of a settings object
+                ]
+            });
+        }
+
     })
 }
