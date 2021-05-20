@@ -164,4 +164,9 @@ html {
     .categories {
         padding: 2vw 4vw;
     }
+
+    .slick-prev,
+    .slick-next {
+        display: none !important;
+    }
 }
