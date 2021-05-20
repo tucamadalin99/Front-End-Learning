@@ -137,12 +137,10 @@ window.onload = () => {
         let featuredItems = data.results.filter(item => item.featured);
         const MAX_CAROUSEL_ITEMS = 12;
 
-        if (featuredItems.length
-            > MAX_CAROUSEL_ITEMS) {
-            featuredItems = featuredItems.slice(MAX_CAROUSEL_ITEMS);
-        }
-
         if (featuredItems.length > 0) {
+            featuredItems = featuredItems.length > MAX_CAROUSEL_ITEMS ?
+                featuredItems.slice(MAX_CAROUSEL_ITEMS) : featuredItems;
+
             featuredItems.forEach(item => {
                 carouselWrapper.insertAdjacentHTML("afterbegin",
                     `<div class="carousel-col">
