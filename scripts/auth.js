@@ -8,7 +8,7 @@ var firebaseConfig = {
     appId: "1:185203005676:web:b77b0a61affd56af9c6dc9",
     measurementId: "G-0LV3RBN6J8"
 };
-
+import initSlick from './slickInit.js';
 
 const checkImageExists = (imageUrl, callBack) => {
     var imageData = new Image();
@@ -132,6 +132,7 @@ window.onload = () => {
             })
         }
 
+        //Pushes a maximum of the first 12 featured=true items into the carousel-wrapper
         let carouselWrapper = document.querySelector(".carousel-wrapper");
         const featuredItems = data.results.filter(item => item.featured);
         const MAX_CAROUSEL_ITEMS = 12;
@@ -158,50 +159,8 @@ window.onload = () => {
                     currentItems++;
                 })
             }
-            $('.carousel-wrapper').slick({
-                dots: true,
-                mobileFirst: true,
-                arrows: true,
-                infinite: false,
-                speed: 300,
-                slidesToShow: 2,
-                slidesToScroll: 1,
-                responsive: [
-                    {
-                        breakpoint: 1024,
-                        settings: {
-                            slidesToShow: 4,
-                            slidesToScroll: 1,
-                            infinite: true,
-                            dots: true
-                        }
-                    },
-                    {
-                        breakpoint: 667,
-                        settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 2
-                        }
-                    },
-                    {
-                        breakpoint: 480,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1
-                        }
-                    },
-                    {
-                        breakpoint: 375,
-                        settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 1
-                        }
-                    }
-                    // You can unslick at a given breakpoint now by adding:
-                    // settings: "unslick"
-                    // instead of a settings object
-                ]
-            });
+            //Imported function initializing slick-carousel
+            initSlick();
         }
 
     })

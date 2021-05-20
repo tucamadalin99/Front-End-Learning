@@ -118,7 +118,7 @@ html {
     width: 67px;
     height: 67px;
     border-radius: 50%;
-    background-color: var(--light-gray);
+    background-color: var(--light-yellow);
 }
 
 .carousel-wrapper {
