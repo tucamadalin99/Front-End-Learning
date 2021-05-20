@@ -125,16 +125,16 @@ html {
     margin: 0 2.5vw;
 }
 
-.carousel-col {
+.carousel-wrapper .carousel-col {
     margin: 0 1.5vw;
 }
 
-.recipe-img {
+.carousel-wrapper .carousel-col .recipe-img {
     width: 100%;
     height: 25vh;
 }
 
-.tags-carousel {
+.carousel-wrapper .carousel-col .tags-carousel {
     margin-top: 2vh;
 }
 

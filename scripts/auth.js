@@ -134,15 +134,18 @@ window.onload = () => {
 
         //Pushes a maximum of the first 12 featured=true items into the carousel-wrapper
         let carouselWrapper = document.querySelector(".carousel-wrapper");
-        const featuredItems = data.results.filter(item => item.featured);
+        let featuredItems = data.results.filter(item => item.featured);
         const MAX_CAROUSEL_ITEMS = 12;
 
+        if (featuredItems.length
+            > MAX_CAROUSEL_ITEMS) {
+            featuredItems = featuredItems.slice(MAX_CAROUSEL_ITEMS);
+        }
+
         if (featuredItems.length > 0) {
-            let currentItemsCount = 0;
             featuredItems.forEach(item => {
-                if (currentItemsCount <= MAX_CAROUSEL_ITEMS) {
-                    carouselWrapper.insertAdjacentHTML("afterbegin",
-                        `<div class="carousel-col">
+                carouselWrapper.insertAdjacentHTML("afterbegin",
+                    `<div class="carousel-col">
                 <img class="recipe-img" src="${item.imageUrl}"
                     alt="Recipe picture">
                 <div class="tags-container tags-carousel">
@@ -150,15 +153,12 @@ window.onload = () => {
                 <h1 class="title-carousel-itm">${item.name}</h1>
                 <p class="description">${item.description}</p>
                     </div>`
-                    )
-                    let carouselColTags = document.querySelector(".tags-carousel");
-                    carouselColTags.innerHTML += `<img src="assets/svg/tag.svg" class="tag-svg" alt="Tag icon" />`;
-                    item.tags.forEach(tag => {
-                        carouselColTags.innerHTML += `<span class="tags">${tag}</span>`;
-                    })
-                    currentItemsCount++;
-
-                }
+                )
+                let carouselColTags = document.querySelector(".tags-carousel");
+                carouselColTags.innerHTML += `<img src="assets/svg/tag.svg" class="tag-svg" alt="Tag icon" />`;
+                item.tags.forEach(tag => {
+                    carouselColTags.innerHTML += `<span class="tags">${tag}</span>`;
+                })
             })
             //Imported function initializing slick-carousel
             initSlick();
