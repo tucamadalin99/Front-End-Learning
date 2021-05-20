@@ -131,7 +131,7 @@ html {
 
 .recipe-img {
     width: 100%;
-    height: auto;
+    height: 25vh;
 }
 
 .tags-carousel {
