@@ -8,6 +8,7 @@ var firebaseConfig = {
     appId: "1:185203005676:web:b77b0a61affd56af9c6dc9",
     measurementId: "G-0LV3RBN6J8"
 };
+import initSlick from './slickInit.js';
 
 const checkImageExists = (imageUrl, callBack) => {
     var imageData = new Image();
@@ -129,7 +130,37 @@ window.onload = () => {
                     }
                 });
             })
-
         }
+
+        //Pushes a maximum of the first 12 featured=true items into the carousel-wrapper
+        let carouselWrapper = document.querySelector(".carousel-wrapper");
+        let featuredItems = data.results.filter(item => item.featured);
+        const MAX_CAROUSEL_ITEMS = 12;
+
+        if (featuredItems.length > 0) {
+            featuredItems = featuredItems.length > MAX_CAROUSEL_ITEMS ?
+                featuredItems.slice(MAX_CAROUSEL_ITEMS) : featuredItems;
+
+            featuredItems.forEach(item => {
+                carouselWrapper.insertAdjacentHTML("afterbegin",
+                    `<div class="carousel-col">
+                <img class="recipe-img" src="${item.imageUrl}"
+                    alt="Recipe picture">
+                <div class="tags-container tags-carousel">
+                </div>
+                <h1 class="title-carousel-itm">${item.name}</h1>
+                <p class="description">${item.description}</p>
+                    </div>`
+                )
+                let carouselColTags = document.querySelector(".tags-carousel");
+                carouselColTags.innerHTML += `<img src="assets/svg/tag.svg" class="tag-svg" alt="Tag icon" />`;
+                item.tags.forEach(tag => {
+                    carouselColTags.innerHTML += `<span class="tags">${tag}</span>`;
+                })
+            })
+            //Imported function initializing slick-carousel
+            initSlick();
+        }
+
     })
 }
