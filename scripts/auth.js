@@ -138,9 +138,9 @@ window.onload = () => {
         const MAX_CAROUSEL_ITEMS = 12;
 
         if (featuredItems.length > 0) {
-            let currentItems = 0;
-            if (currentItems <= MAX_CAROUSEL_ITEMS) {
-                featuredItems.forEach(item => {
+            let currentItemsCount = 0;
+            featuredItems.forEach(item => {
+                if (currentItemsCount <= MAX_CAROUSEL_ITEMS) {
                     carouselWrapper.insertAdjacentHTML("afterbegin",
                         `<div class="carousel-col">
                 <img class="recipe-img" src="${item.imageUrl}"
@@ -157,8 +157,8 @@ window.onload = () => {
                         carouselColTags.innerHTML += `<span class="tags">${tag}</span>`;
                     })
                     currentItems++;
-                })
-            }
+                }
+            })
             //Imported function initializing slick-carousel
             initSlick();
         }
