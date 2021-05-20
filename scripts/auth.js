@@ -156,7 +156,8 @@ window.onload = () => {
                     item.tags.forEach(tag => {
                         carouselColTags.innerHTML += `<span class="tags">${tag}</span>`;
                     })
-                    currentItems++;
+                    currentItemsCount++;
+
                 }
             })
             //Imported function initializing slick-carousel
