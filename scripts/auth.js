@@ -136,6 +136,7 @@ window.onload = () => {
         let carouselWrapper = document.querySelector(".carousel-wrapper");
         let featuredItems = data.results.filter(item => item.featured);
         const MAX_CAROUSEL_ITEMS = 12;
+        const MAX_DESCRIPTION_CHARS = 50;
 
         if (featuredItems.length > 0) {
             featuredItems = featuredItems.length > MAX_CAROUSEL_ITEMS ?
@@ -157,10 +158,17 @@ window.onload = () => {
                 item.tags.forEach(tag => {
                     carouselColTags.innerHTML += `<span class="tags">${tag}</span>`;
                 })
+                let carouselItem = document.querySelector(".carousel-col");
+                const queryParam = `?id=${data.results.indexOf(item)}`;
+                carouselItem.addEventListener("click", (e) => {
+                    window.location.href = `./pages/recipe.html` + queryParam;
+                })
             })
             //Imported function initializing slick-carousel
-            initSlick();
+            initSlick('.carousel-wrapper');
         }
 
     })
 }
+
+export default firebaseConfig;

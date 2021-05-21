@@ -1,5 +1,5 @@
-export default function initSlick() {
-    $('.carousel-wrapper').slick({
+export default function initSlick(wrapperName) {
+    $(wrapperName).slick({
         dots: true,
         mobileFirst: true,
         arrows: true,
