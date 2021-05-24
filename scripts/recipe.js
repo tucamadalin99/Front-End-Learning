@@ -112,13 +112,12 @@ window.onload = () => {
 
                     carouselWrapper.insertAdjacentHTML("afterbegin",
                         `<div class="carousel-col">
-                <img class="recipe-img" src="${item.imageUrl}"
-                    alt="Recipe picture">
-                <div class="tags-carousel">
-                </div>
-                <h1 class="title-carousel-itm">${item.name}</h1>
-                <p class="description">${formattedDescription}</p>
-                    </div>`
+                            <img class="recipe-img" src="${item.imageUrl}" alt="Recipe picture">
+                            <div class="tags-carousel">
+                            </div>
+                            <h1 class="title-carousel-itm">${item.name}</h1>
+                            <p class="description">${formattedDescription}</p>
+                        </div>`
                     )
                     let carouselColTags = document.querySelector(".tags-carousel");
                     carouselColTags.innerHTML += `<img src="../assets/svg/tag.svg" class="tag-svg" alt="Tag icon" />`;
