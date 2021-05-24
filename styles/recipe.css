@@ -87,6 +87,22 @@ html {
     flex: 75%;
 }
 
+.overall-grade {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #f8f6e6;
+    width: 300px;
+}
+
+.grade:first-child {
+    margin-left: 2.5vw;
+}
+
+.grade-text {
+    margin: 2.5vh 2.5vw;
+}
+
 .carousel-wrapper {
     margin: 0 2.5vw;
 }
@@ -197,10 +213,11 @@ html {
 }
 
 .delete-btn {
-    border-radius: 50%;
+    border-radius: 2px;
     border: 0;
     background-color: #d22828;
     color: white;
+    text-transform: uppercase;
 }
 
 .delete-btn:hover {
@@ -218,6 +235,10 @@ html {
     }
 
     .submit {
+        width: 100%;
+    }
+
+    .overall-grade {
         width: 100%;
     }
 }

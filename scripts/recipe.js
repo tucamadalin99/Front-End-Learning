@@ -60,6 +60,40 @@ window.onload = () => {
             recipeDescription.textContent = data[recipeId].description;
             recipeContent.appendChild(recipeDescription);
 
+            const overallGrade = document.createElement("div");
+            overallGrade.className = "overall-grade";
+            overallGrade.innerHTML = `
+                <div class="star grade"></div>
+                <div class="star grade"></div>
+                <div class="star grade"></div>
+                <div class="star grade"></div>
+                <div class="star grade"></div>
+                <h3 class="grade-text">No Reviews</h3>
+                `
+
+            let reviewRef = firebase.database().ref(`api/results/${recipeId}/comments`);
+            reviewRef.on('value', async snapshot => {
+                let allGrades = [];
+                await snapshot.forEach(review => {
+                    allGrades.push(review.val().grade);
+                })
+                let means = 0;
+                if (allGrades.length > 0) {
+                    allGrades.forEach(grade => means += grade);
+                    means /= allGrades.length;
+                    const gradeText = document.querySelector(".grade-text");
+                    gradeText.textContent = `${means.toFixed(1)} Stars`;
+                    const stars = document.querySelectorAll(".grade");
+                    stars.forEach(star => star.style.backgroundImage = `url("../assets/rating/star-outline.png")`)
+                    for (let i = 0; i < Math.round(means); i++) {
+                        stars[i].style.backgroundImage = `url("../assets/rating/star.png")`;
+                    }
+                }
+
+            })
+
+            recipeContent.appendChild(overallGrade);
+
             const carouselWrapper = document.querySelector(".carousel-wrapper");
             let featuredItems = data.filter(item => item.featured);
             const MAX_CAROUSEL_ITEMS = 12;
@@ -72,6 +106,10 @@ window.onload = () => {
                     featuredItems.slice(MAX_CAROUSEL_ITEMS) : featuredItems;
 
                 featuredItems.forEach(item => {
+                    let formattedDescription =
+                        item.description.length > MAX_DESCRIPTION_CHARS ?
+                            item.description.slice(MAX_DESCRIPTION_CHARS) : item.description;
+
                     carouselWrapper.insertAdjacentHTML("afterbegin",
                         `<div class="carousel-col">
                 <img class="recipe-img" src="${item.imageUrl}"
@@ -79,7 +117,7 @@ window.onload = () => {
                 <div class="tags-carousel">
                 </div>
                 <h1 class="title-carousel-itm">${item.name}</h1>
-                <p class="description">${item.description}</p>
+                <p class="description">${formattedDescription}</p>
                     </div>`
                     )
                     let carouselColTags = document.querySelector(".tags-carousel");
@@ -87,8 +125,13 @@ window.onload = () => {
                     item.tags.forEach(tag => {
                         carouselColTags.innerHTML += `<span class="tags">${tag}</span>`;
                     })
+                    let carouselItem = document.querySelector(".carousel-col");
+                    const queryParam = `?id=${data.indexOf(item)}`;
+                    carouselItem.addEventListener("click", (e) => {
+                        window.location.href = `./recipe.html` + queryParam;
+                    })
                 })
-                console.log(data);
+
 
                 initSlick(carouselWrapper);
 
@@ -149,24 +192,37 @@ window.onload = () => {
             commentsContainer.innerHTML = "";
         }
         await snapshot.forEach(el => {
-            reviews.push(el.val())
+            reviews.push(
+                {
+                    key: el.key,
+                    values: el.val()
+                }
+            )
         })
 
-        reviews.forEach(review => {
-            let newComment = document.createElement("div");
-            newComment.className = "comment";
-            let content = document.createElement("p");
-            content.className = "comment-text";
-            content.textContent = review.comment;
-            if (review.userID === user.id) {
-                let deleteBtn = document.createElement("button");
-                deleteBtn.className = "delete-btn";
-                deleteBtn.textContent = "x";
-                newComment.appendChild(deleteBtn);
-            }
-            newComment.appendChild(content);
-            commentsContainer.appendChild(newComment);
-        })
+        if (reviews && reviews.length > 0) {
+            reviews.forEach(review => {
+                let newComment = document.createElement("div");
+                newComment.className = "comment";
+                let content = document.createElement("p");
+                content.className = "comment-text";
+                content.textContent = review.values.comment;
+                if (review.values.userID === user.id) {
+                    let deleteBtn = document.createElement("button");
+                    deleteBtn.className = "delete-btn";
+                    deleteBtn.textContent = "delete";
+                    deleteBtn.addEventListener("click", () => {
+                        commentsRef.child(review.key).remove()
+                            .then(() => toastr.success("Comment removed"))
+                            .catch(() => toastr.error("There was an error..."))
+                    })
+                    newComment.appendChild(deleteBtn);
+                }
+                newComment.appendChild(content);
+                commentsContainer.appendChild(newComment);
+            })
+
+        }
     })
 
 }
