@@ -10,21 +10,7 @@ var firebaseConfig = {
 };
 import initSlick from './slickInit.js';
 
-const checkImageExists = (imageUrl, callBack) => {
-    var imageData = new Image();
-    imageData.onload = () => {
-        callBack(true);
-    };
-    imageData.onerror = () => {
-        callBack(false);
-    };
-    imageData.src = imageUrl;
-}
-
-window.onload = () => {
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
+const login = () => {
     const user = {
         id: localStorage.getItem("userId"),
         username: localStorage.getItem("username"),
@@ -41,6 +27,25 @@ window.onload = () => {
     } else {
         console.log("Auth failed, no user in local storage");
     }
+}
+
+const checkImageExists = (imageUrl, callBack) => {
+    var imageData = new Image();
+    imageData.onload = () => {
+        callBack(true);
+    };
+    imageData.onerror = () => {
+        callBack(false);
+    };
+    imageData.src = imageUrl;
+}
+
+window.onload = () => {
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    login();
+
 
     let apiDataRef = firebase.database().ref("api");
     let data = [];
@@ -171,4 +176,4 @@ window.onload = () => {
     })
 }
 
-export default firebaseConfig;
+export { firebaseConfig, login };

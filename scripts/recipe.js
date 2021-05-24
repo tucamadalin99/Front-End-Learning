@@ -1,5 +1,5 @@
 import initSlick from '../scripts/slickInit.js';
-import firebaseConfig from '../scripts/auth.js';
+import { firebaseConfig } from '../scripts/auth.js';
 
 window.onload = () => {
     var queryString = decodeURIComponent(window.location.search);
