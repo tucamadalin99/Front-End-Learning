@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-    <link rel="stylesheet" href="./styles/variables.css">
-    <link rel="stylesheet" href="./styles/header.css">
-    <link rel="stylesheet" href="./styles/body.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/variables.css">
+    <link rel="stylesheet" href="../styles/header.css">
+    <link rel="stylesheet" href="../styles/recipe.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
         integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
@@ -15,14 +15,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css"
         integrity="sha512-6lLUdeQ5uheMFbWm3CP271l14RsX1xtx+J5x2yeIDkkiBpeVTNhTqijME7GgRKKi6hCqovwCoBTlRBEC20M8Mg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Easymeals</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
+        integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Recipe</title>
 </head>
 
-
 <body>
-
     <div class="top-nav">
-        <img class="logo" src="./public/logo_home2.png" alt="Site Logo" />
+        <img class="logo" src="../public/logo_home2.png" alt="Site Logo" />
         <div class="search-container">
             <input type="text" class="search-box" placeholder="Search">
             <button id="submit-search" class="btn-search">
@@ -49,7 +50,7 @@
     </div>
     <div class="navbar">
         <ul class="nav-list">
-            <li> <a href="">HOME</a></li>
+            <li> <a href="../index.html">HOME</a></li>
             <li><a class="recipes-link" href="./pages/recipes.html">RECIPES</a></li>
             <li><a href="./pages/forum.html">FORUM</a></li>
             <li><a href="./pages/shop.html">SHOP</a></li>
@@ -58,28 +59,52 @@
         </ul>
     </div>
 
-    <div class="banner">
+    <div class="content">
+    </div>
 
-        <div class="recipe-content">
-            <div class="tags-container"></div>
-        </div>
+    <div class="recommandations">
+        <h2 class="recommandations-title">You may like these too</h2>
+        <div class="bar"></div>
     </div>
-    <h2 class="categories-heading">Categories</h2>
-    <div class="cards-container">
-    </div>
+
     <div class="carousel-wrapper">
+
     </div>
 
+    <div class="replies">
+        <h2 class="replies-title">Leave a reply</h2>
+        <div class="bar"></div>
+    </div>
+
+    <form class="review-form">
+        <div class="form-body">
+            <p class="description">Your email address will not be published. Required fields are marked *</p>
+            <div class="rating-container">
+                <p class="rating">Rating:</p>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+            </div>
+
+            <textarea class="review-input" placeholder="Your Comment *"></textarea>
+            <button class="submit" id="submit" disabled="true">Post Comment</button>
+        </div>
+    </form>
+
+    <div class="comments">
+    </div>
 
     <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase.js"></script>
-    <script type="module" src="scripts/auth.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    <script type="module" src="../scripts/recipe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
         integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.0/slick/slick.min.js"></script>
-    <script type="module" src="scripts/slickInit.js"></script>
-
 </body>
 
 </html>
