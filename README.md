@@ -4,12 +4,22 @@ Recap front-end project
 ## Description
 An overall simple web-app made with Vanilla JS, HTML & CSS for reviewing recipes.
 
+## Frontend methodologies used
+- Flexbox
+- Dynamic & validated generated content
+- Responsive web design principles
+
+## Technologies and libraries used
+- HTML5
+- CSS3
+- ES6
+- Lodash
+- jQuery
+- Slick carousel
+- Toastr.js
+- Firebase
+
 # Overall Structure
-
-## Database
-The chosen database for this particular project is Firebase database. A picture of the structure is attached below.
-![image](https://user-images.githubusercontent.com/50795013/119494582-23d0c680-bd6a-11eb-8a08-6d1b23a6b85b.png)
-
 
 ## Home Page
 ![home](https://user-images.githubusercontent.com/50795013/119494255-c50b4d00-bd69-11eb-9ac0-243fee1e6154.png)
@@ -26,20 +36,9 @@ A rating system is implemented in which the user can grade a recipe and leave a 
 ![search](https://user-images.githubusercontent.com/50795013/119495576-3697cb00-bd6b-11eb-9c0f-4777217c6cfc.png)
 The search pages includes a grid of all the recipes present in the database along with some filters for cutting down unwanted results.
 
-## Frontend methodologies used
-- Flexbox
-- Dynamic & validated generated content
-- Responsive web design principles
-
-## Technologies and libraries used
-- HTML5
-- CSS3
-- ES6
-- Lodash
-- jQuery
-- Slick carousel
-- Toastr.js
-- Firebase
+## Database
+The chosen database for this particular project is Firebase database. A picture of the structure is attached below.
+![image](https://user-images.githubusercontent.com/50795013/119494582-23d0c680-bd6a-11eb-8a08-6d1b23a6b85b.png)
 
 
 
