@@ -78,11 +78,21 @@ window.onload = () => {
                 if (searchedItem) {
                     let searchedCriteria = document.getElementById(searchedItem);
                     searchedCriteria.checked = true;
-
+                    let filteredByRedirect = [];
+                    allRecipes.forEach(recipe => {
+                        recipe.tags.forEach(tag => {
+                            if (tag === searchedItem) {
+                                filteredByRedirect.push(recipe);
+                            }
+                        })
+                    })
+                    applyState(filteredByRedirect);
+                } else {
+                    applyState(allRecipes);
                 }
             }
 
-            applyState(allRecipes);
+
 
             let checkboxes = document.querySelectorAll(".input-checkbox");
             let filters = [];
