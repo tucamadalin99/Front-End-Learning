@@ -38,7 +38,8 @@ The search pages includes a grid of all the recipes present in the database alon
 
 ## Database
 The chosen database for this particular project is Firebase database. A picture of the structure is attached below.
-![image](https://user-images.githubusercontent.com/50795013/119494582-23d0c680-bd6a-11eb-8a08-6d1b23a6b85b.png)
+![db (2)](https://user-images.githubusercontent.com/50795013/119509009-eb84b480-bd78-11eb-9d24-20b2d2fc871d.png)
+
 
 
 
