@@ -133,6 +133,11 @@ window.onload = () => {
                             </div>`
                         );
                     }
+                    let btnTitle = document.querySelector('.category-title');
+                    btnTitle.parentElement.addEventListener("click", () => {
+                        const queryParam = `?item=${btnTitle.textContent}`;
+                        window.location.href = `./pages/search.html` + queryParam;
+                    })
                 });
             })
         }
